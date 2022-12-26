@@ -1,0 +1,49 @@
+$container-width : 100px;
+.treeview-container {
+    width: $container-width;
+    position:absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    border: 1px solid #ccc;
+
+    label {
+        display: block;
+        cursor: pointer;
+
+        &:hover {
+            background-color: red;
+        }
+    }
+    label:has( + input[type="radio"]:checked) {
+        background:yellow;
+        color:#000;
+    }
+
+    .vTree-menu {
+        z-index: -2;
+        position: absolute;
+        top:0px;
+        left:-1000px;
+        height: 100vh;
+        transition :all 0.3s ease;
+        background-color: blue;
+    }
+    input[type="radio"] {
+        display: none;
+    }
+    input[type="radio"]:checked + .vTree-menu {
+        left: $container-width;
+    }
+}
+
+.mask{
+    z-index:-1;
+    position: absolute;
+    top: 0;
+    left: 20;
+    width: $container-width;
+    height: 100vh;
+    background-color: red;
+}
