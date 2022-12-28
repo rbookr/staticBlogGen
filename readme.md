@@ -23,6 +23,28 @@
 
 其它项目需要用的时候,直接使用编译好的js文件
 
+流程
+
+数据格式
+
+```
+[
+  {
+    "title":"目录1"
+    items:[
+      {
+        title:"article title1",
+        ext:"md" | "html"
+        org: org_path
+        path:"output/hash.html"
+        children:[]
+      }
+      ...
+    ]
+  },
+  ...
+]
+```
 ## 感谢下面的文章给我提供的思路
 
 

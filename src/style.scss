@@ -1,3 +1,4 @@
+@import './style/_variable';
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -19,11 +20,14 @@ html, body{
     padding: 0;
     margin:0;
 }
-body {
-    background-color: blue;
+
+.container {
+    margin-left: $side-nav-width;
 }
 
-a {
-    text-decoration: none;
+.tabBar {
+    height: $tab-bar-height;
+    // width: calc(100vh - $side-nav-width);
+    overflow: hidden;
+    border: 1px solid #ccc;
 }
-

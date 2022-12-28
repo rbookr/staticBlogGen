@@ -1,6 +1,6 @@
-$container-width : 100px;
+@import './variable';
 .treeview-container {
-    width: $container-width;
+    width: $side-nav-width;
     position:absolute;
     top:0;
     bottom: 0;
@@ -34,7 +34,7 @@ $container-width : 100px;
         display: none;
     }
     input[type="radio"]:checked + .vTree-menu {
-        left: $container-width;
+        left: $side-nav-width;
     }
 }
 
@@ -43,7 +43,7 @@ $container-width : 100px;
     position: absolute;
     top: 0;
     left: 20;
-    width: $container-width;
+    width: $side-nav-width;
     height: 100vh;
     background-color: red;
 }
