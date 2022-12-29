@@ -5,50 +5,9 @@ import treeViewVue from './components/treeView.vue';
 import tabBarVue from './components/tabBar.vue';
 
 defineProps({
-    msg:String
+    links:[]
 })
 
-const links = [
-    {
-        title:'name1',
-        children: [
-            {
-                title: "c1",
-                children :[
-                    {
-                        title: "c1-1",
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        title:'name2',
-        children: [
-            {
-                title: "c2",
-                children :[
-                    {
-                        title: "c2-1",
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        title:'name3',
-        children: [
-            {
-                title: "c3",
-                children :[
-                    {
-                        title: "c3-1",
-                    }
-                ]
-            }
-        ]
-    },
-]
 
 const tabs = [
 {name:"name1"},
@@ -76,7 +35,9 @@ function tab_change(val) {
             <p>
             hello
             </p>
-            {{msg}}
+            <p>
+            {{links}}
+            </p>
         </div>
     </div>
   </div>

@@ -1,34 +1,36 @@
 @import './variable';
 .treeview-container {
     width: $side-nav-width;
-    position:absolute;
+    position:fixed;
     top:0;
     bottom: 0;
     left: 0;
     height: 100vh;
-    border: 1px solid #ccc;
+    border: 1px solid rgba($color: #000, $alpha: 0.2);
 
     label {
         display: block;
+        z-index:200;
         cursor: pointer;
+        color: var(--fg-color3);
 
         &:hover {
             background-color: red;
         }
     }
-    label:has( + input[type="radio"]:checked) {
-        background:yellow;
-        color:#000;
+    label.active{
+        color: var(--fg-color1);
+        background:var(--treeView-bg-color2) ;
     }
 
     .vTree-menu {
-        z-index: -2;
+        z-index: 200;
         position: absolute;
         top:0px;
         left:-1000px;
         height: 100vh;
         transition :all 0.3s ease;
-        background-color: blue;
+        background-color: var(--treeView-bg-color2);
     }
     input[type="radio"] {
         display: none;
@@ -39,11 +41,11 @@
 }
 
 .mask{
-    z-index:-1;
+    z-index:300;
     position: absolute;
     top: 0;
     left: 20;
     width: $side-nav-width;
     height: 100vh;
-    background-color: red;
+    background-color: var(--treeView-bg-color);
 }

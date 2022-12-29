@@ -3,6 +3,8 @@
 // import App from './App.vue'
 
 import _data from './data'
+import data from '../tools/data.json'
 import myCreateApp from './app'
 
-myCreateApp(_data);
+console.log(data)
+myCreateApp({links:data});
