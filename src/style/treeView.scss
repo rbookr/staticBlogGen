@@ -24,6 +24,8 @@
     }
 
     .vTree-menu {
+        min-width:200px;
+        overflow: auto;
         z-index: 200;
         position: absolute;
         top:0px;

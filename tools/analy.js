@@ -39,30 +39,34 @@ for( let dir of re) {
 let json_result = JSON.stringify(results,null,4)
 fs.writeFileSync('data.json', json_result,{encoding:'utf8'})
 
+// 返回值 bool 
+// if 返回 true ,则说明返回无内容
 function work(path,title,object = {}) {
 
     object.title = filename_remove_ext(title)
     console.log( path )
 
     let md_files = Glob_md(path);
-    if( md_files.length ) object.items = []
+    if( md_files.length ) object.children = []
     for( let md_file of md_files) {
         let a = {}
         do_for_one_md_file(path, md_file,a);
-        object.items.push(a);
+        object.children.push(a);
     }
 
     let dirs = Glob_dir(path)
-    // console.log( dirs )
-    if(dirs.length ) object.children = []
+    if(dirs.length)
+        if(!object.children ) object.children = [];
+    else return true; //没有内容
 
     for( let dir of dirs){
         let new_path = join(path,dir);
         let a = {}
-        work(new_path,dir,a)
-        if( a.items && a.items.length)
+        let bret = work(new_path,dir,a)
+        if( bret == false)
             object.children.push(a)
     }
+    return !object.children
 }
 
 function filename_remove_ext(filename){
@@ -85,7 +89,7 @@ function do_for_one_md_file(path,filename,object = {}) {
     let yaml = yamlFront.loadFront(content)
 
     //3. get file info
-    object.filename =   yaml.title || filename_remove_ext(filename)
+    object.title =   yaml.title || filename_remove_ext(filename)
     object.path = relative_file_path
     object.out_path = relative_out_path
 }

@@ -22,6 +22,14 @@ function toggle_radio(self){
     self.target.parentNode.querySelectorAll('.active').forEach( e => e.classList.remove('active'))
     self.target.classList.add('active')
 }
+
+const emit = defineEmits(["clickArticle"])
+
+// >> method event
+function deal_clickArticle(item) {
+    emit("clickArticle",item)
+}
+
 </script>
 
 <template>
@@ -30,7 +38,7 @@ function toggle_radio(self){
     <template v-for="(link,idx) of links" :key="idx">
             <input type="radio" :id="'vTree'+idx" name="treeView-name">
             <div class="vTree-menu">
-                <tree-view-item :items="link.children" />
+                <tree-view-item :items="link.children"  @clickArticle="deal_clickArticle"/>
             </div>
     </template>
     </div>
