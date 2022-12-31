@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 import treeViewItem from './treeViewItem.vue'
 
+import bars from '../assets/bars.svg'
+
 defineProps({
   links: [],
 })
@@ -43,6 +45,10 @@ function deal_clickArticle(item) {
     </template>
     </div>
     <div class="mask">
+    <label for="treeview-show" class="toggle-bar"> 
+        <bars/>
+    </label>
+    <input type="checkbox" id="treeview-show"/>
         <label v-for="(link,idx) of links" :data="'vTree'+idx" @click="toggle_radio($event)"> {{link.title}} </label>
     </div>
 </div>

@@ -53,3 +53,6 @@
 - [外部js调用vue事件方法 - MELANCHOLYS - 博客园](https://www.cnblogs.com/melancholys/p/16547793.html)
 - 给我提供了tabbar实现的思路 [vue 后台管理系统实现页面多tab，右键菜单关闭、刷新等功能 - 简书](https://www.jianshu.com/p/78d09060bbb0)
 - [vite打包lib库 - 掘金](https://juejin.cn/post/7073646687968821256)
+
+
+[Dealing with SVG icons in Vue + Vite - DEV Community 👩‍💻👨‍💻](https://dev.to/geowrgetudor/dealing-with-svg-icons-in-vue-vite-an9)
