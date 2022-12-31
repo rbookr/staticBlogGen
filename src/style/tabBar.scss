@@ -18,7 +18,16 @@
             background:#fffffff6;
             color:#000;
             border-top: 3px solid #000;
+
+            & > .close_icon {
+                color: rgba($color:#000,$alpha:0.2);
+
+            }
+            &:hover > .close_icon {
+                color: rgba($color:#000,$alpha:0.5);
+            }
         }
+
     }
 }
 .tab{
@@ -31,13 +40,14 @@
     border-radius:3px 3px 0px 0px;
     box-shadow: 0 0.5rem 0.8rem #00000080;
     position: relative;
+
     span.close_icon {
         position: absolute;
         top:0;
         right: 5px;
         color:rgba($color: #ccc, $alpha: 0.1);
-        &:hover {
-            color:rgba($color: #ccc, $alpha: 0.8);
-        }
+    }
+    &:hover span.close_icon {
+        color:rgba($color: #ccc, $alpha: 0.8);
     }
 }

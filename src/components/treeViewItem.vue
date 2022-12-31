@@ -3,7 +3,7 @@ import { defineComponent, ref } from 'vue'
 
 const emit = defineEmits(["clickArticle"])
 defineProps({
-  items: [],
+  items: {type:Array,default:[]},
 })
 defineComponent({
     name:'tree-view-item'

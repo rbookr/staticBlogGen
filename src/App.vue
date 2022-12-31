@@ -13,16 +13,18 @@ defineProps({
 const tabs = ref([])
 const TabBarRef = ref(null)
 
-function tab_change(val) {
-    console.log("tab_change ",val)
+function tab_change(item) {
+    changeArtile( item.path ||  item.title)
 }
 
 var article = ref("")
 // >> 事件处理
+const changeArtile = (_article) => { 
+    article.value = _article
+}
 const deal_clickArticle = (item) => { 
-    article.value = item.path ||  item.title
+    changeArtile( item.path ||  item.title)
     //tabs.value.push(item)
-    console.log(TabBarRef.value)
     TabBarRef.value.push_item(item);
 }
 </script>

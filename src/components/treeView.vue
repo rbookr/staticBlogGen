@@ -5,7 +5,8 @@ import treeViewItem from './treeViewItem.vue'
 import bars from '../assets/bars.svg'
 
 defineProps({
-  links: [],
+  links: {type:Array,default:[]},
+  prefixId:""
 })
 
 
@@ -37,7 +38,7 @@ function deal_clickArticle(item) {
 <template>
 <div class="treeview-container">
     <div style="z-index:301;">
-    <template v-for="(link,idx) of links" :key="idx">
+    <template v-for="(link,idx) of links" :key="'prefixId' + '-'+idx">
             <input type="radio" :id="'vTree'+idx" name="treeView-name">
             <div class="vTree-menu">
                 <tree-view-item :items="link.children"  @clickArticle="deal_clickArticle"/>

@@ -8,8 +8,7 @@ const emit = defineEmits(['change','update:modelValue'])
 watch(
     ()=>checked.value,
     (val,old) => {
-        console.log(val)
-        //emit("change",val)
+        emit("change",tabs.value[val])
         //emit("update:modelValue",val) //当 选中的index改变时,
     }
 )
@@ -32,7 +31,14 @@ function event_close(){
 
 //添加子方法
 const push_item = (item)=>{
+    for( let [idx,{path}] of tabs.value.entries()) {
+        if( path == item.path){
+            checked.value = idx
+            return;
+        }
+    }
     tabs.value.push(item)
+    checked.value = tabs.value.length-1
 }
 
 const set_last_active = () =>{}
@@ -43,7 +49,6 @@ defineExpose({push_item,set_last_active})
 
 <template>
 <ul class="tabBar-ul" @wheel.prevent="ulWheel">
-{{checked}}
     <li v-for="(item,index) of tabs" :key="index">
         <input type="radio" :id="'tab-'+index" name="tab" :value="index" v-model="checked">
         <label class="tab" :for="'tab-'+index"> {{`${index+1}: ` + item.title}} 
