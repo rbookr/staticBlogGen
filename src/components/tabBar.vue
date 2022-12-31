@@ -56,6 +56,7 @@ defineExpose({push_item,set_last_active})
         </label>
     </li>
 </ul>
+<div class="treeViteItem-bottom-bar"></div>
 </template>
 
 <style scoped lang="scss">
