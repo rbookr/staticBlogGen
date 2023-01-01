@@ -14,9 +14,14 @@
         z-index:200;
         cursor: pointer;
         color: var(--fg-color3);
+        overflow: hidden;
+        white-space: nowrap;
 
         &:hover {
-            background-color: red;
+            background-color: var(--treeView-bg-color2);
+            overflow: visible;
+            border: 1px solid;
+            border-color:rgba($color: #fff, $alpha: 0.1);
         }
     }
     label.active{

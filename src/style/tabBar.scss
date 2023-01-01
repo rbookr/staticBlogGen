@@ -45,7 +45,6 @@ $BorderColor:rgba($color:#fff,$alpha:0.1);
 .tab{
     height: $tabHeight;
     line-height: $tabHeight;
-    cursor: pointer;
     padding:0px 20px;
     //margin:0px 2px;
     background:#191919;
@@ -57,6 +56,7 @@ $BorderColor:rgba($color:#fff,$alpha:0.1);
 
     span.close_icon {
         position: absolute;
+        cursor: pointer;
         top:0;
         right: 5px;
         color:rgba($color: #ccc, $alpha: 0.1);

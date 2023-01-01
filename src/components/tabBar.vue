@@ -2,7 +2,7 @@
 import { ref ,watch,defineProps,defineEmits,computed,defineExpose} from 'vue'
 
 const checked = ref(0)
-const emit = defineEmits(['change','update:modelValue'])
+const emit = defineEmits(['change','close'])
 
 
 watch(
@@ -25,8 +25,8 @@ function ulWheel(e) {
     console.log(e)
 }
 
+//关闭的事件
 function event_close(){
-
 }
 
 //添加子方法
@@ -41,6 +41,17 @@ const push_item = (item)=>{
     checked.value = tabs.value.length-1
 }
 
+//删除一个元素的方法
+const slice_item = (idx,e) =>{
+    e.stopPropagation()
+    console.log(idx)
+    tabs.value.splice(idx,1)
+    if( idx - 1 >= 0)
+        checked.value = idx-1
+    else if(tabs.value.length > 0)
+        checked.value = 0
+}
+
 const set_last_active = () =>{}
 
 defineExpose({push_item,set_last_active})
@@ -52,7 +63,7 @@ defineExpose({push_item,set_last_active})
     <li v-for="(item,index) of tabs" :key="index">
         <input type="radio" :id="'tab-'+index" name="tab" :value="index" v-model="checked">
         <label class="tab" :for="'tab-'+index"> {{`${index+1}: ` + item.title}} 
-        <span class="close_icon">x</span>
+        <span class="close_icon" @click.stop="slice_item(index,$event)">x</span>
         </label>
     </li>
 </ul>
