@@ -45,6 +45,17 @@
   ...
 ]
 ```
+
+## markdown-it
+
+所用到的插件:
+
+- 添加属性 [arve0/markdown-it-attrs: Add classes, identifiers and attributes to your markdown with {} curly brackets, similar to pandoc's header attributes](https://github.com/arve0/markdown-it-attrs) 
+- 为 markdown-it 设计的标题锚点生成. [markdown-it-anchor/README-zh\_CN.md at master · valeriangalliat/markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor/blob/master/README-zh_CN.md)
+- Renders `[[x]]` as `<kbd>x</kbd>` [jGleitz/markdown-it-kbd: markdown-it plugin for keystrokes. Renders [[x]] as <kbd>x</kbd>](https://github.com/jGleitz/markdown-it-kbd)
+- parser, adding emoji & emoticon syntax support. [markdown-it/markdown-it-emoji: Emoji syntax plugin for markdown-it markdown parser](https://github.com/markdown-it/markdown-it-emoji)
+- TOC work with markdown-it-anchor [nagaozen/markdown-it-toc-done-right: A table of contents (TOC) plugin for Markdown-it with focus on semantic and security. Made to work gracefully with markdown-it-anchor.](https://github.com/nagaozen/markdown-it-toc-done-right)
+
 ## 感谢下面的文章给我提供的思路
 
 

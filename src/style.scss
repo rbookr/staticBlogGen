@@ -37,5 +37,16 @@ html, body{
     height: $tab-bar-height;
     // width: calc(100vh - $side-nav-width);
     overflow: hidden;
-    border: 1px solid #ccc;
+    // border: 1px solid #ccc;
+}
+.article-container {
+    .article-path{
+        display: block;
+        border-bottom: 1px solid rgba(0, 255, 255, 0.05);
+        padding: 0.5rem 0.5rem;
+    }
+    .markdown-body {
+        max-width: 800px;
+        margin: 0 auto;
+    }
 }

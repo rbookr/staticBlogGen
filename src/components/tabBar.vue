@@ -1,7 +1,7 @@
 <script setup>
 import { ref ,watch,defineProps,defineEmits,computed,defineExpose} from 'vue'
 
-const checked = ref(0)
+const checked = ref(-1)
 const emit = defineEmits(['change','close'])
 
 
