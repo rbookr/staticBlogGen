@@ -11,7 +11,8 @@ import glob from 'glob';
 // 递归事件目录
 // 路过
 
-const search_dir = '/home/rainboy/mycode/RainboyDefault/blogData'
+const search_dir = process.argv[2] || process.cwd()
+// const search_dir = '/home/rainboy/mycode/RainboyDefault/blogData'
 const output_prefix = 'dist'
 
 const ignores = ['node_modules/','bin/','dist/','public/']
@@ -37,7 +38,7 @@ for( let dir of re) {
 }
 
 let json_result = JSON.stringify(results,null,4)
-fs.writeFileSync('data.json', json_result,{encoding:'utf8'})
+fs.writeFileSync(join(output_prefix,'data.json'), json_result,{encoding:'utf8'})
 
 // 返回值 bool 
 // if 返回 true ,则说明返回无内容
