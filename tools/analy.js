@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+//#!/usr/bin/env node
 //desc: 分析指定目录下的文件,生成需要的数据
 import {readFileSync} from 'fs'
 import fs from 'fs'
@@ -11,8 +11,8 @@ import glob from 'glob';
 // 递归事件目录
 // 路过
 
-const search_dir = process.argv[2] || process.cwd()
-// const search_dir = '/home/rainboy/mycode/RainboyDefault/blogData'
+//const search_dir = process.argv[2] || process.cwd()
+const search_dir = '/home/rainboy/mycode/RainboyDefault/blogData'
 const output_prefix = 'dist'
 
 const ignores = ['node_modules/','bin/','dist/','public/']
@@ -27,18 +27,6 @@ function Glob_dir(path) {
     return glob.glob.sync("*/",{ignore:ignores,cwd:path})
 }
 
-//
-let results = []
-//1. bianli dejie gou
-for( let dir of re) {
-    let a = {}
-    let _path = join(search_dir,dir);
-    work(_path ,dir,a)
-    results.push(a)
-}
-
-let json_result = JSON.stringify(results,null,4)
-fs.writeFileSync(join(output_prefix,'data.json'), json_result,{encoding:'utf8'})
 
 // 返回值 bool 
 // if 返回 true ,则说明返回无内容
@@ -94,3 +82,23 @@ function do_for_one_md_file(path,filename,object = {}) {
     object.path = relative_file_path
     object.out_path = relative_out_path
 }
+
+
+
+const Analyze = () => {
+
+    let results = []
+    //1. bianli dejie gou
+    for( let dir of re) {
+        let a = {}
+        let _path = join(search_dir,dir);
+        work(_path ,dir,a)
+        results.push(a)
+    }
+
+    // let json_result = JSON.stringify(results,null,4)
+    // fs.writeFileSync(join(output_prefix,'data.json'), json_result,{encoding:'utf8'})
+    return results
+}
+
+export default Analyze

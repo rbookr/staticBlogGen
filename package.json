@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "bin": {
-    "staticwebgen": "./tools/analy.js"
+    "staticwebgen": "./tools/staticWebGen.js"
   },
   "dependencies": {
     "fs-extra": "^11.1.0",
