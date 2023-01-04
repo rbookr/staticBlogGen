@@ -8,7 +8,67 @@
 
 还是自己实现一个简单的,静态blog生成的项目吧
 
+## 使用方式
 
+
+
+创建一个自己的blog,目录如下
+
+```
++myblog
+├── 学习笔记
+│   ├── 笔记1.md
+│   └── 笔记2.md
+└── 源码分析
+    └── nginx
+        └── index.md
+```
+
+安装staticWebGen
+
+```
+yarn global add https://github.com/rbookr/staticWebGen
+```
+
+使用
+
+```
+cd myblog
+staticWebGen 
+```
+
+就会生成一个`myblog/dist`目录
+
+```
+python3 -m http.server 8888
+```
+访问`http://127.0.0.1:8888/dist/index.html`,查看结果
+
+### nginx部署
+
+- 创建一个`/etc/nginx/conf.d/blog.conf`文件,拷贝下面的内容
+- 当然也可以直接下面的内容复制到`/etc/nginx/nginx.conf`里正确的位置
+
+```
+server {
+    listen 80; # 监听的端口
+    server_name 你的blog域名,例如 myblog.com; # 写你的blog域名
+
+    location = / {
+      root /path_to_blog/dist; # 你的上传blog的目录
+      index index.html;
+      try_files $uri/index.html $uri;
+    }
+
+    location ~ ^/assets { 
+        root /path_to_blog/dist; # assets资源的访问
+    }
+
+    location / {
+      root /path_to_blog;
+    }
+}
+```
 
 ## 我需要的功能
 
@@ -44,6 +104,13 @@
   },
   ...
 ]
+```
+
+使用rsync上传整个blog目录
+
+```
+cd myblog
+rsync -avzP --delete . MYPS:/path_to_blog
 ```
 
 ## markdown-it
