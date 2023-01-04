@@ -8,6 +8,8 @@
 
 还是自己实现一个简单的,静态blog生成的项目吧
 
+Demo : https://blog.roj.ac.cn
+
 ## 使用方式
 
 
@@ -27,7 +29,7 @@
 安装staticWebGen
 
 ```
-yarn global add https://github.com/rbookr/staticWebGen
+yarn global add https://github.com/rbookr/staticBlogGen
 ```
 
 使用
