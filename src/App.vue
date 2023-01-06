@@ -1,6 +1,6 @@
 <script setup>
 
-import {ref,computed} from "vue"
+import {ref,computed, getCurrentScope,defineExpose} from "vue"
 import HelloWorld from './components/HelloWorld.vue'
 import treeViewVue from './components/treeView.vue';
 import tabBarVue from './components/tabBar.vue';
@@ -9,7 +9,6 @@ import {createMarkdownRenderer,fetch_md}from '../tools/markdown.js'
 defineProps({
     links:[]
 })
-
 
 const tabs = ref([])
 const TabBarRef = ref(null)
@@ -34,6 +33,22 @@ const deal_clickArticle = (item) => {
     //tabs.value.push(item)
     TabBarRef.value.push_item(item);
 }
+
+//// ======> Global API
+// 得到当前的ActiveTaB的信息
+// { path, title,outputPath}
+const getCurrentTabInfo = ()=>{
+    return TabBarRef.value.getCurrentTabInfo()
+}
+
+const version = ()=>{
+    return 'alpha 0.1';
+}
+
+window.getCurrentTabInfo = getCurrentTabInfo
+
+defineExpose({getCurrentTabInfo,version})
+
 </script>
 
 <template>

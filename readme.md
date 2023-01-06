@@ -13,7 +13,6 @@ Demo : https://blog.roj.ac.cn
 ## 使用方式
 
 
-
 创建一个自己的blog,目录如下
 
 ```
@@ -115,6 +114,19 @@ cd myblog
 rsync -avzP --delete . MYPS:/path_to_blog
 ```
 
+## 如果调试
+
+```
+cd BlogData 
+
+python3 -m http.server 8888
+```
+
+```
+cd this_project
+yarn dev
+```
+
 ## markdown-it
 
 所用到的插件:
@@ -133,6 +145,6 @@ rsync -avzP --delete . MYPS:/path_to_blog
 - [外部js调用vue事件方法 - MELANCHOLYS - 博客园](https://www.cnblogs.com/melancholys/p/16547793.html)
 - 给我提供了tabbar实现的思路 [vue 后台管理系统实现页面多tab，右键菜单关闭、刷新等功能 - 简书](https://www.jianshu.com/p/78d09060bbb0)
 - [vite打包lib库 - 掘金](https://juejin.cn/post/7073646687968821256)
-
-
-[Dealing with SVG icons in Vue + Vite - DEV Community 👩‍💻👨‍💻](https://dev.to/geowrgetudor/dealing-with-svg-icons-in-vue-vite-an9)
+- [Dealing with SVG icons in Vue + Vite - DEV Community 👩‍💻👨‍💻](https://dev.to/geowrgetudor/dealing-with-svg-icons-in-vue-vite-an9)
+- [vuejs3 - How to call a custom Vue 3 method from outside vue app in JavaScript? - Stack Overflow](https://stackoverflow.com/questions/64758293/how-to-call-a-custom-vue-3-method-from-outside-vue-app-in-javascript)
+  还要加`defineExpose`才可以调用暴露的方法

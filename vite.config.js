@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import svgLoader from 'vite-svg-loader';
+import MyVirtualBlogDataPlugin from './tools/virtualDataModule.js';
 
 var proxy = {
   target: {
@@ -15,7 +16,7 @@ var proxy = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(),svgLoader()],
+  plugins: [vue(),svgLoader(),MyVirtualBlogDataPlugin()],
     build:{
         lib:{
             entry: 'src/app.js',

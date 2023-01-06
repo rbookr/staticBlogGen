@@ -41,6 +41,13 @@ const push_item = (item)=>{
     checked.value = tabs.value.length-1
 }
 
+// API
+const getCurrentTabInfo = () => {
+    //console.log(checked.value)
+    //console.log(tabs.value[checked.value])
+    return tabs.value[checked.value]
+}
+
 //删除一个元素的方法
 const slice_item = (idx,e) =>{
     e.stopPropagation()
@@ -54,7 +61,7 @@ const slice_item = (idx,e) =>{
 
 const set_last_active = () =>{}
 
-defineExpose({push_item,set_last_active})
+defineExpose({push_item,set_last_active,getCurrentTabInfo})
 
 </script>/
 

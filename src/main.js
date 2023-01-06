@@ -2,10 +2,15 @@
 // import { createApp } from 'vue'
 // import App from './App.vue'
 
-import _data from './data'
-// import data from '../tools/data.json'
-import myCreateApp from './app'
+import './style.scss'
 import data from 'virtual-blog-data:_'
+import { createApp } from 'vue'
+import __App__ from './App.vue'
 
-//console.log(data)
-myCreateApp({links:data});
+// const app = createApp(App,{links:data})
+// window.Root  = app.mount('#app')
+ window.App  = createApp(__App__,{links:data}).mount('#app')
+
+console.log( App.version())
+
+import "./event_hook"
