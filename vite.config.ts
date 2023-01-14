@@ -16,14 +16,14 @@ var proxy = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(),svgLoader(),MyVirtualBlogDataPlugin()],
-    build:{
-        lib:{
-            entry: 'src/app.js',
-            name:'webApp',
-            fileName: (format) => `vite-lib.${format}.js` // 打包后的文件名
-        }
-    },
+  plugins: [vue(),svgLoader(),MyVirtualBlogDataPlugin('/home/rainboy/mycode/RainboyDefault/blogData')],
+    // build:{
+    //     lib:{
+    //         entry: 'src/app.js',
+    //         name:'webApp',
+    //         fileName: (format) => `vite-lib.${format}.js` // 打包后的文件名
+    //     }
+    // },
   server: {
     proxy: {
       '^.*\.md': proxy

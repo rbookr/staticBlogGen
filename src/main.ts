@@ -5,7 +5,7 @@
 import './style.scss'
 
 //@ts-ignore
-import data from 'virtual-blog-data:_'
+import data from 'virtual:blogData'
 
 import { createApp } from 'vue'
 import __App__ from './App.vue'
