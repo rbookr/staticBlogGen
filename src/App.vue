@@ -1,35 +1,40 @@
-<script setup>
+<script setup lang="ts">
 
-import {ref,computed, getCurrentScope,defineExpose} from "vue"
-import HelloWorld from './components/HelloWorld.vue'
+import { ref, computed, getCurrentScope, defineExpose, Ref } from "vue"
 import treeViewVue from './components/treeView.vue';
 import tabBarVue from './components/tabBar.vue';
-import {createMarkdownRenderer,fetch_md}from '../tools/markdown.js'
+import { createMarkdownRenderer, fetch_md } from '../tools/markdown'
+import { tabItem } from './interface'
+
+type tabBarVueType = InstanceType<typeof tabBarVue>;
 
 defineProps({
-    links:[]
+    links: []
 })
 
-const tabs = ref([])
-const TabBarRef = ref(null)
-const markdown = ref("")
-const markdownToHtml = ref("")
+//InstanceType<typeof ElForm>
+const tabs  = ref([])
 
-function tab_change(item) {
-    changeArtile( item.path ||  item.title)
-    console.log('fetch_md')
-    fetch_md(item.path).then ( md => {
+// 组件ref如何声明类型?
+const TabBarRef = ref<null | tabBarVueType>(null)
+const markdown = ref("")
+const markdownToHtml = ref("**no content**")
+
+function tab_change(item: tabItem): void {
+    changeArtile(item.path || item.title)
+    //console.log('fetch_md')
+    fetch_md(item.path).then((md: string) => {
         markdownToHtml.value = md
     })
 }
 
 var article = ref("")
 // >> 事件处理
-const changeArtile = (_article) => { 
+const changeArtile = (_article: string) => {
     article.value = _article
 }
-const deal_clickArticle = (item) => { 
-    changeArtile( item.path ||  item.title)
+const deal_clickArticle = (item: tabItem) => {
+    changeArtile(item.path || item.title)
     //tabs.value.push(item)
     TabBarRef.value.push_item(item);
 }
@@ -37,17 +42,17 @@ const deal_clickArticle = (item) => {
 //// ======> Global API
 // 得到当前的ActiveTaB的信息
 // { path, title,outputPath}
-const getCurrentTabInfo = ()=>{
-    return TabBarRef.value.getCurrentTabInfo()
+const getCurrentTabInfo = () => {
+    return TabBarRef.value!.getCurrentTabInfo()
 }
 
-const version = ()=>{
+const version = () => {
     return 'alpha 0.1';
 }
 
-window.getCurrentTabInfo = getCurrentTabInfo
+(<any>window).getCurrentTabInfo = getCurrentTabInfo
 
-defineExpose({getCurrentTabInfo,version})
+defineExpose({ getCurrentTabInfo, version })
 
 </script>
 
@@ -61,7 +66,7 @@ defineExpose({getCurrentTabInfo,version})
             <tab-bar-vue :tabs="tabs" @change="tab_change" ref="TabBarRef"/>
         </div>
         <div class="article-container">
-            <span class="article-path"> {{article}} </span>
+            <span class="article-path"> {{ article }} </span>
             <div class="markdown-body" v-html="markdownToHtml"></div>
         </div>
     </div>
@@ -69,4 +74,5 @@ defineExpose({getCurrentTabInfo,version})
 </template>
 
 <style scoped>
+
 </style>

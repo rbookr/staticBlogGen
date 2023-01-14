@@ -12,7 +12,7 @@ import mathjax3 from "markdown-it-mathjax3"
 var re = new MarkdownIt()
 console.log( re.render('# hel') )
 
-export const createMarkdownRenderer = ( srcDir,options= {},base = '/') => {
+export const createMarkdownRenderer = (options= {},base = '/') => {
 
     const md = MarkdownIt({
         html :true,
@@ -30,11 +30,13 @@ export const createMarkdownRenderer = ( srcDir,options= {},base = '/') => {
 
     return md
 }
+
+//默认的markdown
 export const __MD = createMarkdownRenderer();
 
 
 const rFrontMatter = /^(-{3,}|;{3,})[\n,\r]{1,2}([\s\S]+?)[\n,\r]{1,2}\1(?:$|[\n,\r]{1,2}([\s\S]*)$)/;
-export const fetch_md = async (src) => {
+export const fetch_md = async (src : string) => {
     return myAxios({
         url: src,
         method: 'get',

@@ -1,7 +1,7 @@
 //虚拟模块的前缀
 //作用,调用此模块,得到blog的扫描数据
 //
-import Analyze from './analy.js'
+import Analyze from './analy'
 
 export default function MyVirtualBlogDataPlugin() {
   // 虚拟模块的前缀，在使用的时候，模块名必须以这个作为前缀的模块名才会被进一步解析

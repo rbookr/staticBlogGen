@@ -148,3 +148,10 @@ yarn dev
 - [Dealing with SVG icons in Vue + Vite - DEV Community 👩‍💻👨‍💻](https://dev.to/geowrgetudor/dealing-with-svg-icons-in-vue-vite-an9)
 - [vuejs3 - How to call a custom Vue 3 method from outside vue app in JavaScript? - Stack Overflow](https://stackoverflow.com/questions/64758293/how-to-call-a-custom-vue-3-method-from-outside-vue-app-in-javascript)
   还要加`defineExpose`才可以调用暴露的方法
+
+
+
+为什么我用vite+ts ,import vue 一直有Error TS7016
+https://github.com/vuematerial/vue-material/issues/530
+
+ts 如何在window上添加数据
