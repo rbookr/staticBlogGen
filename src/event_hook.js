@@ -1,3 +1,16 @@
+// 祖先是否有含有某个id
+function accident_has_id(dom,id){
+    dom = dom.parentElement
+    do { 
+        if( dom.id == id)
+            return true;
+        if(dom.nodeName.toLocaleLowerCase() == 'body')
+            break;
+        dom = dom.parentElement
+    } while (1);
+    return false;
+}
+
 //a标签点击 事件 hook
 //[javascript - 怎么拦截页面上所有A标签的跳转 - SegmentFault 思否](https://segmentfault.com/q/1010000037608020)
 //

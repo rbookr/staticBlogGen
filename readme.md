@@ -40,6 +40,20 @@ staticWebGen
 
 就会生成一个`myblog/dist`目录
 
+配置文件 `staticWebGen.config.yaml`
+
+```plaintext
+# 忽略的目录
+ignores:
+  - "dist/" # 不扫描dist/目录
+
+# 忽略的md文件
+ignores_md:
+  - "_*" # 以_开头的md文件
+  - reg1
+```
+
+
 ```
 python3 -m http.server 8888
 ```

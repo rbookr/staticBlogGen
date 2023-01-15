@@ -40,18 +40,21 @@ const deal_clickArticle = (item: tabItem) => {
 }
 
 //// ======> Global API
-// 得到当前的ActiveTaB的信息
+// API: 得到当前的ActiveTaB的信息
 // { path, title,outputPath}
 const getCurrentTabInfo = () => {
     return TabBarRef.value!.getCurrentTabInfo()
 }
 
+// API: 得到当前的版本号
 const version = () => {
     return 'alpha 0.1';
 }
 
-(<any>window).getCurrentTabInfo = getCurrentTabInfo
+// API 关闭 slide_Menu
+// API 如果打开,就关闭 slide_Menu
 
+//暴露的事件
 defineExpose({ getCurrentTabInfo, version })
 
 </script>
@@ -61,7 +64,7 @@ defineExpose({ getCurrentTabInfo, version })
     <div class="sidebar">
         <treeViewVue :links="links" @clickArticle="deal_clickArticle" />
     </div>
-    <div class="container">
+    <div class="container" id="container">
         <div class="tabBar">
             <tab-bar-vue :tabs="tabs" @change="tab_change" ref="TabBarRef"/>
         </div>

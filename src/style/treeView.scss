@@ -48,6 +48,27 @@
     }
 }
 
+.fake-mask {
+    z-index:200;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    left:0;
+    backdrop-filter: blur(5px) brightness(60%);
+    display: none;
+
+    &:hover {
+        backdrop-filter: brightness(80%) sepia(80%);
+        box-shadow: -10px 10px 10px #ccc inset;
+        // border:1px solid green;
+    }
+}
+
+.fake-mask:has(~ input[type="radio"]:checked ) {
+    display: block;
+}
+
 .mask{
     z-index:300;
     position: absolute;
@@ -85,3 +106,4 @@
 
     left:-100px;
 }
+
