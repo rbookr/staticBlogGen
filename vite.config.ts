@@ -6,7 +6,8 @@ import MyVirtualBlogDataPlugin from './tools/virtualDataModule.js';
 var proxy = {
   target: {
     protocol: 'http:',
-    host: '192.168.8.247',
+    //host: '192.168.8.247',
+    host: '127.0.0.1',
     port: 8888,
     //pfx: fs.readFileSync('path/to/certificate.p12'),
     //passphrase: 'password',
