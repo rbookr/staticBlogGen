@@ -20,9 +20,9 @@ export default defineConfig({
   plugins: [vue(),svgLoader(),MyVirtualBlogDataPlugin('/home/rainboy/mycode/RainboyDefault/blogData')],
     // build:{
     //     lib:{
-    //         entry: 'src/app.js',
+    //         entry: 'tools/markdown_cgi.ts',
     //         name:'webApp',
-    //         fileName: (format) => `vite-lib.${format}.js` // 打包后的文件名
+    //         fileName: (format) => `markdown-cgi.${format}.js` // 打包后的文件名
     //     }
     // },
   server: {

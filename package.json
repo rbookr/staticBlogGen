@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "tsc --build tsconfig_cgi.json",
+    "build_vite": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },
   "bin": {

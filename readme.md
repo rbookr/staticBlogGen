@@ -61,6 +61,21 @@ python3 -m http.server 8888
 
 ### nginx部署
 
+
+```plaintext
+sudo apt install nginx fcgiwrap spwan-cgi
+git clone --depth 1 https://github.com/rbookr/staticBlogGen
+cd staticBlogGen
+yarn install
+yarn build
+```
+
+启动`spwan`程序
+
+```
+/usr/bin/spwan-cgi -f /usr/bin/fcgiwrap -p 8888
+```
+
 - 创建一个`/etc/nginx/conf.d/blog.conf`文件,拷贝下面的内容
 - 当然也可以直接下面的内容复制到`/etc/nginx/nginx.conf`里正确的位置
 
@@ -81,6 +96,13 @@ server {
 
     location / {
       root /path_to_blog;
+    }
+
+    # markdown 渲染的cgi程序
+    location ~ .*\.cgi {
+      TODO
+      root /path/to/staticWebGen/cgi;
+      fastcgi_pass 127.0.0.1:8888;
     }
 }
 ```
