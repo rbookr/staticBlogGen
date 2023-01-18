@@ -12,3 +12,15 @@ function myAxios(axiosConfig:AxiosRequestConfig) {
 }
 
 export default myAxios;
+
+
+interface md_server_return_interface {
+    __content:string
+}
+
+export const get_md = (filename:string) : Promise<md_server_return_interface>  => {
+    return myAxios({
+        url: filename,
+        method: 'get',
+    }).then( res => res.data)
+}

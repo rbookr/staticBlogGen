@@ -3,8 +3,9 @@
 import { ref, computed, getCurrentScope, defineExpose, Ref } from "vue"
 import treeViewVue from './components/treeView.vue';
 import tabBarVue from './components/tabBar.vue';
-import { createMarkdownRenderer, fetch_md } from '../tools/markdown'
+//import { createMarkdownRenderer, fetch_md } from '../tools/markdown'
 import { tabItem } from './interface'
+import {get_md} from '../tools/myAxios'
 
 type tabBarVueType = InstanceType<typeof tabBarVue>;
 
@@ -23,9 +24,15 @@ const markdownToHtml = ref("**no content**")
 function tab_change(item: tabItem): void {
     changeArtile(item.path || item.title)
     //console.log('fetch_md')
-    fetch_md(item.path).then((md: string) => {
-        markdownToHtml.value = md
+    //fetch_md(item.path).then((md: string) => {
+    //    markdownToHtml.value = md
+    //})
+
+    get_md(item.path).then( (data )=>{
+        console.log(data)
+        markdownToHtml.value = data.data.__content
     })
+
 }
 
 var article = ref("")
