@@ -34,14 +34,14 @@ var proxy = {
     protocol: 'http:',
     //host: '192.168.8.247',
     host: '127.0.0.1',
-    port: 8888,
+    port: 8000,
     // rewrite: (path:string) => '/staticWebGen.cgi?' + node_qs.encode({md:path}) ,
     // rewrite: (p:string) => {return md_json_path_convert(p,outDir)}
     //pfx: fs.readFileSync('path/to/certificate.p12'),
     //passphrase: 'password',
   },
     changeOrigin: true,
-    rewrite: (p:string) => md_json_path_convert(p,outDir)
+    //rewrite: (p:string) => md_json_path_convert(p,outDir)
 }
 
 // https://vitejs.dev/config/

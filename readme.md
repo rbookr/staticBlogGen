@@ -59,8 +59,54 @@ python3 -m http.server 8888
 ```
 访问`http://127.0.0.1:8888/dist/index.html`,查看结果
 
+
+## 渲染方式
+
+
+有两种方式,
+
+1. 在创建时,把每一个md文件渲染,优点,
+  - 部署网站后,访问速度快
+  - 可以直接静态部署,不需要服务器
+  缺点
+  - 如果md文件多,可以渲染在时间长(基本上你应该没有1万个以上的md文件),
+2. 懒惰渲染
+  - 部署网站后,访问速度慢
+  - 需要服务器
+  缺点
+  - 如果md文件多,可以渲染在时间小(基本上你应该没有1万个以上的md文件),
+
+
+
 ### nginx部署
 
+#### 1. 创建时生成json文件的部署方式
+
+nginx配置
+```plaintext
+server  {
+
+  listen 8000;
+
+  root /path/to/blog;
+  index dist/index.html;
+
+# 如果请求md文件,就去找json文件
+  location ~ ^/(.*)\.md$ {
+    default_type application/json;
+    try_files /dist/$1.json =404;
+  }
+
+# 如果请求html文件,那么选去dist下寻找
+  location ~ .*\.html {
+    try_files /dist/$uri $uri =404;
+  }
+}
+
+```
+
+
+#### 2.cgi的部署方式
 
 ```plaintext
 sudo apt install nginx fcgiwrap spwan-cgi
