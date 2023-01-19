@@ -5,7 +5,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { build } from 'vite'
 import {Analyze,recursiveMenu,MenuInterface} from '../cgi/analy.js'
-import {md_json_path_convert,render_to_json_file} from '../cgi/markdown.js'
+import {md_json_path_convert,render_to_json_file,deal_menu_data} from '../cgi/markdown.js'
 
 
 // 1. 得到当前运行的路径
@@ -15,16 +15,8 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 let blogData = Analyze(cwd)
 
-// 对blogData进行处理
-recursiveMenu(blogData,(d /*MenuInterface*/) => {
-    let org_path = d.path
-    let md_json_path = md_json_path_convert(org_path,'dist')
-
-    render_to_json_file(
-        path.join(cwd,d.path),
-        path.join(cwd,md_json_path)
-    )
-})
+// 对blogData进行处理,渲染成json文件
+deal_menu_data(cwd,'dist',blogData)
 
 
 ;(async () => {

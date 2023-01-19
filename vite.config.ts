@@ -7,27 +7,14 @@ import node_qs from 'node:querystring'
 
 import {Analyze,recursiveMenu,MenuInterface} from './tools/analy'
 
-import {md_json_path_convert,render_to_json_file,emptyDirSync} from './tools/markdown'
+import {md_json_path_convert,render_to_json_file,emptyDirSync,deal_menu_data} from './tools/markdown'
 
 var search_dir = '/home/rainboy/mycode/RainboyDefault/blogData'
 var search_data = Analyze(search_dir)
 let outDir = 'dist'
 
-//清空
-emptyDirSync(path.join(search_dir,outDir))
-
-// 对blogData进行处理
-recursiveMenu(search_data,(d /*MenuInterface*/) => {
-
-    let org_path = d.path
-    let md_json_path = md_json_path_convert(org_path,'dist')
-
-    render_to_json_file(
-        path.join(search_dir,d.path),
-        path.join(search_dir,md_json_path)
-    )
-})
-
+//清空,对blogData进行处理
+deal_menu_data(search_dir,outDir,search_data)
 
 var proxy = {
   target: {

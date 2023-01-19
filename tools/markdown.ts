@@ -9,6 +9,7 @@ import {existsSync,readFileSync,writeFileSync} from 'fs'
 import yamlFront from "yaml-front-matter";
 import {ensureDirSync,emptyDirSync as _emptyDirSync} from 'fs-extra'
 import * as ejs from 'ejs'
+import { recursiveMenu ,MenuInterface} from './analy'
 
 import anchor from "markdown-it-anchor";
 import kbdplugin from "markdown-it-kbd";
@@ -130,4 +131,24 @@ export const render_to_json_file = (src:string,dst:string)=>{
     //2.写入
     writeFileSync(dst,JSON.stringify(md_html_with_yamlheader),{encoding:'utf8'})
 
+}
+
+
+export const deal_menu_data = (search_dir:string,outDir:string,search_data:MenuInterface[]) :void =>{
+
+    //清空
+    emptyDirSync(join(search_dir,outDir))
+
+    // 对blogData进行处理
+    
+    recursiveMenu(search_data,(d:MenuInterface) => {
+
+        let org_path = d.path
+        let md_json_path = md_json_path_convert(org_path,'dist')
+
+        render_to_json_file(
+            join(search_dir,d.path),
+            join(search_dir,md_json_path)
+        )
+    })
 }
