@@ -4,6 +4,11 @@ import svgLoader from 'vite-svg-loader';
 import MyVirtualBlogDataPlugin from './tools/virtualDataModule.js';
 import node_qs from 'node:querystring'
 
+import {Analyze} from './tools/analy'
+
+var search_data = Analyze('/home/rainboy/mycode/RainboyDefault/blogData')
+
+
 var proxy = {
   target: {
     protocol: 'http:',
@@ -19,7 +24,7 @@ var proxy = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(),svgLoader(),MyVirtualBlogDataPlugin('/home/rainboy/mycode/RainboyDefault/blogData')],
+  plugins: [vue(),svgLoader(),MyVirtualBlogDataPlugin(search_data)],
     // build:{
     //     lib:{
     //         entry: 'tools/markdown_cgi.ts',

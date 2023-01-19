@@ -99,11 +99,22 @@ server {
     }
 
     # markdown 渲染的cgi程序
-    location ~ .*\.cgi {
-      TODO
-      root /path/to/staticWebGen/cgi;
-      fastcgi_pass 127.0.0.1:8888;
-    }
+	location ~ .*\.md$ {
+		root /home/rainboy/mycode/RainboyDefault/staticWebGen/cgi;
+		fastcgi_pass 127.0.0.1:8081;
+		fastcgi_index  index.cgi;
+		fastcgi_param  SCRIPT_FILENAME    $document_root/staticWebGen.cgi;
+		fastcgi_param  BLOG_ROOT /home/rainboy/mycode/RainboyDefault/blogData/;
+		fastcgi_param  REQUEST_URI        staticWebGen.cgi;
+
+		fastcgi_param  REQUEST_URI        $request_uri;
+		fastcgi_param  REMOTE_ADDR        $remote_addr;
+		fastcgi_param  REMOTE_PORT        $remote_port;
+		fastcgi_param  SERVER_ADDR        $server_addr;
+		fastcgi_param  SERVER_PORT        $server_port;
+		fastcgi_param  SERVER_NAME        $server_name;
+		#include fastcgi.conf;
+	}
 }
 ```
 

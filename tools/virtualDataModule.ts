@@ -3,9 +3,9 @@
 //[Plugin API | Vite](https://vitejs.dev/guide/api-plugin.html#virtual-modules-convention)
 //-- 来自
 //[Vite 虚拟模块不完全指北 - 掘金](https://juejin.cn/post/7128401663152357407)
-import {Analyze} from './analy'
+import {MenuInterface} from './analy'
 
-export default function MyVirtualBlogDataPlugin( search_dir : string) {
+export default function MyVirtualBlogDataPlugin( _data:MenuInterface[] ) {
   // 虚拟模块的前缀，在使用的时候，模块名必须以这个作为前缀的模块名才会被进一步解析
   const virtualModuleId = 'virtual:blogData'
 
@@ -37,7 +37,7 @@ export default function MyVirtualBlogDataPlugin( search_dir : string) {
       if(id !== virtualModuleId)
           return
       // 返回一个预期的文件内容
-      let _data = Analyze(search_dir) //得到数据
+      // let _data = Analyze(search_dir) //得到数据
       return `export default ${JSON.stringify(_data)}`
     }
   }
