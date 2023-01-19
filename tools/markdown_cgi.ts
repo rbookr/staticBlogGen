@@ -5,12 +5,12 @@
 
 //[javascript - How to resolve Node.js ES6 (ESM) Modules with the TypeScript Compiler (TSC). TSC doesn't emit the correct file-ext - Stack Overflow](https://stackoverflow.com/questions/44979976/how-to-resolve-node-js-es6-esm-modules-with-the-typescript-compiler-tsc-tsc)
 
-import {Render as mdRender} from './markdown.js'
+import {Render as mdRender,ejs_render,md_render_with_yamlheader} from './markdown.js'
 import {existsSync,readFileSync} from 'fs'
-import * as ejs from 'ejs'
 import { join } from 'path'
 import * as node_qs from 'node:querystring'
 import yamlFront from "yaml-front-matter";
+
 
 
 const respone_type_text = 'text/plain'
@@ -70,22 +70,13 @@ if( !existsSync(md_file_path) ) {
     respond_error(`${md_file_path} 没有找到`, 404)
 }
 
-const md_text = ejs.render(readFileSync(md_file_path,{encoding:'utf8'}),
-                    {} , // data TODO
-                    //options
-                    {
-                        filename:md_file_path
-                    });
+const md_text = ejs_render(md_file_path)
+
 // 产生对应的markdown
 
-const yamlLoad = yamlFront.safeLoadFront(md_text)
-const md_html = mdRender(yamlLoad.__content)
-
+var md_html_with_yamlheader = md_render_with_yamlheader(md_text)
 respond(JSON.stringify({
     code:0,
-    data : {
-        ...yamlLoad,
-        __content:md_html
-    }
+    data : md_html_with_yamlheader
 }))
 

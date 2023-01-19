@@ -162,8 +162,7 @@ export const recursiveMenu = (data : MenuInterface[],fn:(d:MenuInterface)=>void)
         if( data[i].children )
             recursiveMenu(data[i].children!,fn)
         else {
-            fn(data[i])
+            fn(data[i]) //处理
         }
     }
-
 }

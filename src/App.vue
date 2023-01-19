@@ -30,7 +30,7 @@ function tab_change(item: tabItem): void {
 
     get_md(item.path).then( (data )=>{
         console.log(data)
-        markdownToHtml.value = data.data.__content
+        markdownToHtml.value = data.__content
     })
 
 }
